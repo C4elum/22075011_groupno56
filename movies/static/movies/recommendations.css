@@ -1,0 +1,81 @@
+
+.movie-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.movie-poster {
+    cursor: pointer;
+}
+
+#movie-details-overlay {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+    max-width: 600px; /* Adjust the maximum width as desired */
+}
+
+.movie-details-content {
+    margin-bottom: 10px;
+}
+
+
+.movie-details-box {
+    background-color: #fff;
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Additional styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+}
+
+h2 {
+    color: #083057;
+    margin-bottom: 20px;
+}
+
+.movie-poster img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+/* Style for success message */
+.messages .success {
+    background-color: #DFF2BF;
+    border: 1px solid #4F8A10;
+    color: #4F8A10;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+/* Style for error message */
+.messages .error {
+    background-color: #FFBABA;
+    border: 1px solid #D8000C;
+    color: #D8000C;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+/* Style for warning message */
+.messages .warning {
+    background-color: #FFEAA8;
+    border: 1px solid #9F6000;
+    color: #9F6000;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+

@@ -1,0 +1,30 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome to Movie Maven</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'movies/main.css' %}">
+    <link rel="icon" href="{% static 'users/logo.png' %}"  type="image/png">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="{% url 'movies:movie-list' %}"></a>
+            <img src="{% static 'movies/logo.png' %}" alt="Movie Maven Logo">
+        </div>
+        <h1>Welcome to Movie Maven</h1>
+        <p>Where the reel magic begins and the popcorn never ends!</p>
+    </header>
+    <main>
+        
+        <p>Join us and discover a world of movies.</p>
+        <div class="buttons">
+            <a href="{% url 'users:register' %}">
+                <button>Register</button>
+            </a>
+            <p class="small-text">Already a member? <a href="{% url 'users:login' %}">Login</a></p>
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!-- movie_details.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ movie.original_title }} Details</title>
+</head>
+<body>
+    <h2>{{ movie.original_title }} Details</h2>
+    
+    <img src="https://image.tmdb.org/t/p/original/{{ movie.poster_path }}" alt="{{ movie.original_title }} Poster Poster" width="320" height="480">
+    <p>Genres: {{ movie.genres }}</p>
+    <p>Release Date: {{ movie.release_date }}</p>
+    <p>Overview: {{ movie.overview }}</p>
+  
+    {% if user.is_authenticated %}
+                    {% if movie in watchlist_movies %}
+                        <p>In Your Watchlist</p>
+                    {% else %}
+                        <form method="post" action="{% url 'movies:add_to_watchlist' movie.id %}">
+                            {% csrf_token %}
+                            <button type="submit">Add to Watchlist</button>
+                        </form>
+                    {% endif %}
+                    {% if movie in watched_movies %}
+                        <p>Already Watched</p>
+                    {% else %}
+                        <form method="post" action="{% url 'movies:add_to_watched' movie.id %}">
+                            {% csrf_token %}
+                            <label for="rating">Rating (out of 10):</label>
+                            <input type="number" name="rating" id="rating" min="1" max="10" required>
+                            <button type="submit">Add to Watched</button>
+                        </form>
+                    {% endif %}
+                {% endif %}
+</body>
+</html> -->
+
+<!-- {% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ movie.original_title }} Details</title>
+    <link rel="stylesheet" href="{% static 'movies/movie_details.css' %}">
+</head>
+<body>
+    <h2>{{ movie.original_title }} Details</h2>
+    <div class="movie-details-container">
+        
+        <div class="movie-poster">
+            <img src="https://image.tmdb.org/t/p/original/{{ movie.poster_path }}" alt="{{ movie.original_title }} Poster" width="320" height="480">
+        </div>
+        
+        <div class="movie-details">
+            <p>Genres: {{ movie.genres }}</p>
+            <p>Release Date: {{ movie.release_date }}</p>
+            <p>Overview: {{ movie.overview }}</p>
+           
+            {% if user.is_authenticated %}
+                {% if movie in watchlist_movies %}
+                    <p>In Your Watchlist</p>
+                {% else %}
+                    <form method="post" action="{% url 'movies:add_to_watchlist' movie.id %}">
+                        {% csrf_token %}
+                        <button type="submit">Add to Watchlist</button>
+                    </form>
+                {% endif %}
+                {% if movie in watched_movies %}
+                    <p>Already Watched</p>
+                {% else %}
+                    <form method="post" action="{% url 'movies:add_to_watched' movie.id %}">
+                        {% csrf_token %}
+                        <label for="rating">Rating (out of 10):</label>
+                        <input type="number" name="rating" id="rating" min="1" max="10" required>
+                        <button type="submit">Add to Watched</button>
+                    </form>
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html> -->
+<!-- movie_details.html -->
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ movie.original_title }} Details</title>
+    <link rel="stylesheet" href="{% static 'movies/movie_details.css' %}">
+</head>
+<body>
+    <style>
+        form input {
+  display: inline-block;
+  width: 60px;
+  vertical-align: top; /* add this line */
+}
+
+form button {
+  display: inline-block;
+  margin-left: 10px;
+}
+    </style>
+    <div class="container">
+        <h2>{{ movie.original_title }}</h2>
+        <div class="movie-details-container">
+            <!-- Movie poster on the left -->
+            <div class="movie-poster">
+                <img src="https://image.tmdb.org/t/p/original/{{ movie.poster_path }}" alt="{{ movie.original_title }} Poster" width="320" height="480" onerror="this.onerror=null; this.src='/' + 'static' + '/movies/alternate.png';">
+            </div>
+            <!-- Movie details on the right -->
+            <div class="movie-details">
+                <p><strong>Genres:</strong> {{ movie.genres }}</p>
+                <p><strong>Release Date:</strong> {{ movie.release_date }}</p>
+                <p><strong>Rating:</strong> {{ movie.vote_average}}⭐</p>
+                <p><strong>Overview:</strong> {{ movie.overview }}</p>
+                <!-- Include watchlist and watched functionality if needed -->
+                {% if user.is_authenticated %}
+                    {% if movie in watchlist_movies %}
+                        <p class="watchlist">In Your Watchlist</p>
+                    {% else %}
+                        <form method="post" action="{% url 'movies:add_to_watchlist' movie.id %}">
+                            {% csrf_token %}
+                            <button type="submit">Add to Watchlist</button>
+                        </form>
+                    {% endif %}
+                    {% if movie in watched_movies %}
+                        <p class="watched">Already Watched</p>
+                    {% else %}
+                        <form method="post" action="{% url 'movies:add_to_watched' movie.id %}">
+                            {% csrf_token %}
+                            <label for="rating">Rating (out of 10):</label>
+                            <input type="number" name="rating" id="rating" min="1" max="10" required>
+                            <button type="submit">Add to Watched</button>
+                        </form>
+                    {% endif %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

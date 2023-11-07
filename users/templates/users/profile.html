@@ -1,0 +1,53 @@
+{% extends "users/base.html" %}
+{% load static %}
+
+{% block content %}
+    <title>User Profile</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'users/profile.css' %}">
+    <div class="container">
+        <h2 class="profile-heading">User Profile: {{ user.username }}</h2>
+
+        <div class="box-container">
+            <div class="box">
+                <h3 class="box-heading">Watched Movies</h3>
+                <ul>
+                    {% for watched_movie in watched_movies1 %}
+                        <li>
+                            {{ watched_movie.movie.original_title }}
+                            <span class="rating">({{ watched_movie.rating }} ⭐)</span>
+                        </li>
+                    {% empty %}
+                        <p class="empty-message">No watched movies.</p>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div class="box">
+                <h3 class="box-heading">Watchlist</h3>
+                <ul>
+                    {% for watchlistmovie in watchlist_movies1 %}
+                        <li>
+                            <span class="movie-title">{{ watchlistmovie.movie.original_title }}</span>
+                        </li>
+                    {% empty %}
+                        <p class="empty-message">No movies in your watchlist.</p>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div class="box">
+                <h3 class="box-heading">Your Top Genres</h3>
+                <ul class="favorite-genres">
+                    {% for genre in favorite_genres %}
+                        <li>{{ genre }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        <div class="butn">
+            <a href="{% url 'users:edit_profile' %}" class="btn edit-profile-btn">Edit Profile</a>
+            <a href="{% url 'users:select_genres' %}" class="btn genres-btn">Back to Genres</a>
+        </div>
+    </div>
+{% endblock %}

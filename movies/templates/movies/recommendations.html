@@ -1,0 +1,44 @@
+
+{% extends "users/base.html" %}
+{% load static %}
+
+
+{% block content %}
+    <title>Movie Recommendations</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'movies/recommendations.css' %}">
+  
+
+    <h3>Drumroll, please! 🥁 Your moment of cinematic truth has arrived. 🎬</h3>
+    <div class="movie-grid">
+        {% for movie in recommended_movies %}
+            <div class="movie-poster">
+                
+                <img src="https://image.tmdb.org/t/p/original/{{ movie.poster_path }}" alt="{{ movie.original_title }} Poster" width="320" height="480" data-movie-id="{{ movie.id }}" onerror="this.onerror=null; this.src='/' + 'static' + '/movies/alternate.png';">
+
+
+            </div>
+        {% endfor %}
+    </div>
+
+    <div id="movie-details-overlay">
+        <div class="movie-details-content">
+            <div class="movie-poster-container">
+               
+            </div>
+            <!-- Movie details content will be loaded here dynamically -->
+            
+        </div>
+    </div>
+    
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{% static 'movies/recommendations.js' %}"></script>
+
+{% endblock %}

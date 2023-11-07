@@ -1,0 +1,83 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Registration</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'users/register.css' %}">
+    <link rel="icon" href="{% static 'users/logo.png' %}"  type="image/png">
+</head>
+    
+<body>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url("https://i.pinimg.com/originals/a8/ec/06/a8ec0697a5399d67899078d2632e1b75.png");
+            background-size: cover;
+            background-position: right center;
+            background-attachment: fixed;
+        }
+
+        body::before {
+            content: "";
+            background-color: rgba(255, 255, 255, 0.205);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: auto;
+            height: auto;
+            z-index: -1;
+        }
+
+        /* Rest of your CSS styles for header, logo, main content, etc. */
+
+    </style>
+    <div class="form-container">
+        <form method="post">
+            {% csrf_token %}
+           
+           
+            <div class="form-field">
+                <label for="{{ form.username.id_for_label }}">Username:</label>
+                {{ form.username }}
+            </div>
+            <div class="form-field">
+                <label for="{{ form.email.id_for_label }}">Email:</label>
+                {{ form.email }}
+            </div>
+            <div class="form-field">
+                <label for="{{ form.first_name.id_for_label }}">First name:</label>
+                {{ form.first_name }}
+            </div>
+            <div class="form-field">
+                <label for="{{ form.last_name.id_for_label }}">Last name:</label>
+                {{ form.last_name }}
+            </div>
+            <div class="form-field">
+                <label for="{{ form.password1.id_for_label }}">Password:</label>
+                {{ form.password1 }}
+                <div class="password-requirements">
+                    <p>Password must contain at least 8 characters and be alphanumeric.</p>
+                </div>
+            </div>
+            <div class="form-field">
+                <label for="{{ form.password2.id_for_label }}">Password confirmation:</label>
+                {{ form.password2 }}
+            </div>
+            <button type="submit">Register</button>
+
+
+            {% if form.errors %}
+                <ul class="errorlist">
+                    {% for field in form %}
+                        {% for error in field.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </form>
+    </div>
+</body>
+</html>

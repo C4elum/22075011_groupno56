@@ -1,0 +1,92 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="{% static 'users/base.css' %}">
+        
+        <link rel="icon" href="{% static 'users/logo.png' %}"  type="image/png">
+
+        <style>
+            body {
+                background-color: #88b3c2;
+                font-family: Arial, sans-serif;
+                font-size: 16px;
+                line-height: 1.5;
+                margin: 0;
+                padding: 0;
+            }
+            header {
+                background-color: #083057;
+                color: #FFFFFF;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 10px;
+            }
+            header img {
+                width: 100px;
+            }
+            .navbar-links {
+                display: flex;
+                justify-content: flex-end;
+            }
+            .navbar-links a:not(:last-child) {
+                margin-right: 20px;
+            }
+            .button {
+                display: inline-block;
+                padding: 8px 16px;
+                font-size: 16px;
+                font-weight: bold;
+                text-align: center;
+                text-decoration: none;
+                background-color: #4CAF50;
+                color: #FFFFFF;
+                border-radius: 8px;
+                transition: background-color 0.3s ease;
+            }
+            .button:hover {
+                background-color: #3e8e41;
+            }
+            footer {
+                width: 100%;
+                text-align: center;
+                padding: 20px;
+                background-color: #083057;
+                color: #FFFFFF;
+            }
+            footer img {
+                width: 100%;
+                height: auto;
+            }
+            #content {
+                padding: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <a href="{% url 'movies:movie-list' %}">
+                <img src="{% static 'users/logo.png' %}" alt="Your Logo">
+            </a>
+            <div class="navbar">
+                <div class="navbar-links">
+                    {% if user.is_authenticated %}
+                    <a href="{% url 'users:user_profile' %}" class="button">User</a>
+                    <a href="{% url 'users:logout' %}" class="button">Logout</a>
+                    {% endif %}
+                </div>
+            </div>
+        </header>
+        
+        
+        <div id="content">
+            {% block content %}{% endblock %}
+        </div>
+
+        <footer>
+            <img src="https://styles.redditmedia.com/t5_2qh3s/styles/bannerBackgroundImage_k1ukyjei82r81.png" alt="Footer Image">
+        </footer>
+        
+    </body>
+</html>

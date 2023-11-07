@@ -1,0 +1,37 @@
+
+
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Movie List</title>
+    <link rel="stylesheet" href="{% static 'movies/movie_list.css' %}">
+    <link rel="icon" href="{% static 'users/logo.png' %}"  type="image/png">
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to our treasure trove of cinematic gems.✨</h1>
+        <p class="subtitle">You've unlocked our inventory – the entire list of movies is now at your fingertips for your exploration. Enjoy your cinematic journey!</p>
+        <ul class="movie-list">
+            {% for movie in movies %}
+            <li class="movie-card">
+                <a href="{% url 'movies:movie-detail' movie.id %}">
+                    {% if movie.id in watched_movie_ids %}
+                        <img src="https://image.tmdb.org/t/p/w500/{{ movie.poster_path }}" alt="{{ movie.original_title }} Poster" class="watched-poster">
+                        <span class="tag watched-tag">Watched</span>
+                    {% elif movie.id in watchlist_movie_ids %}
+                        <img src="https://image.tmdb.org/t/p/w500/{{ movie.poster_path }}" alt="{{ movie.original_title }} Poster" class="watchlist-poster">
+                        <span class="tag watchlist-tag">Watchlist</span>
+                    {% else %}
+                        <img src="https://image.tmdb.org/t/p/w500/{{ movie.poster_path }}" alt="{{ movie.original_title }} Poster">
+                    {% endif %}
+                </a>
+                <div class="movie-details">
+                    <p class="movie-title">{{ movie.original_title }}</p>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,9 @@
+<p>Original Title: {{ movie.original_title }}</p>
+<p>Genres:
+    {% for genre in movie.genres|split_string:" " %}
+        {{ genre }}
+        {% if not forloop.last %}, {% endif %}
+    {% endfor %}
+</p>
+<p>Release Date: {{ movie.release_date }}</p>
+<p>Overview: {{ movie.overview }}</p>

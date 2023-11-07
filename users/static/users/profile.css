@@ -1,0 +1,104 @@
+/* Styles for the User Profile page */
+
+body {
+  background-color: #88b3c3;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  background-color: #c4dcdc;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  margin: 20px;
+}
+
+.profile-heading {
+  font-size: 24px;
+  color: #0073e6;
+  margin: 20px 0;
+}
+
+.box-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  gap: 20px; /* Add a slight gap between the boxes */
+}
+
+.box {
+  flex: 1;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  text-align: left;
+}
+
+.box-heading {
+  font-size: 18px;
+  margin: 0;
+  color: #0073e6;
+  margin-bottom: 15px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+ul li {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.empty-message {
+  font-size: 16px;
+  color: #777;
+}
+
+.rating {
+  margin-left: 10px;
+  color: #0c0908;
+  
+}
+
+.favorite-genres {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 18px;
+  text-align: left;
+}
+
+.favorite-genres h3 {
+  font-size: 20px;
+  color: #0073e6;
+  margin: 0;
+}
+
+/* Style the buttons */
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-right: 10px;
+  background-color: #4CAF50;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.btn:hover {
+  background-color: #45a049;
+}
+
+.edit-profile-btn {
+  background-color: #2196F3;
+}
+
+.genres-btn {
+  background-color: #FF9800;
+}

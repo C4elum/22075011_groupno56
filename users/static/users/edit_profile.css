@@ -1,0 +1,108 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #88b3c3;
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+    margin-top: 40px;
+}
+
+form {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9); /* Less opaque background */
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+form div {
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: bold;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+h3 {
+    color: #333;
+    margin-top: 30px;
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+p {
+    color: #777;
+}
+
+.messages {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.error {
+    color: red;
+}
+
+.success {
+    color: green;
+}
+
+button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #1865ad;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #2493c7;
+}
+
+/* Style for success message */
+.messages .success {
+    background-color: #DFF2BF;
+    border: 1px solid #4F8A10;
+    color: #4F8A10;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+/* Style for error message */
+.messages .error {
+    background-color: #FFBABA;
+    border: 1px solid #D8000C;
+    color: #D8000C;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+/* Style for warning message */
+.messages .warning {
+    background-color: #FFEAA8;
+    border: 1px solid #9F6000;
+    color: #9F6000;
+    padding: 10px;
+    margin-bottom: 10px;
+}

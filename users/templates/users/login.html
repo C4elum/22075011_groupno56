@@ -1,0 +1,52 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Login</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'users/login.css' %}">
+    <link rel="icon" href="{% static 'users/logo.png' %}"  type="image/png">
+    
+</head>
+<body>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url("https://i.pinimg.com/originals/a8/ec/06/a8ec0697a5399d67899078d2632e1b75.png");
+            background-size: cover;
+            background-position: right center;
+            background-attachment: fixed;
+        }
+
+        body::before {
+            content: "";
+            background-color: rgba(255, 255, 255, 0.205);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: auto;
+            height: auto;
+            z-index: -1;
+        }
+
+        /* Rest of your CSS styles for header, logo, main content, etc. */
+
+    </style>
+    <div class="container">
+        <h2>Login</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Login</button>
+        </form>
+
+        {% if error_message %}
+            <div class="error">{{ error_message }}</div>
+        {% endif %}
+
+        <p>Don't have an account? <a href="{% url 'users:register' %}">Register</a></p>
+    </div>
+</body>
+</html> 

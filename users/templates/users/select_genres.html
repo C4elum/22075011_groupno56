@@ -1,0 +1,79 @@
+{% extends "users/base.html" %}
+{% load static %}
+
+
+
+{% block content %}
+    <title>Genre Selection</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'users/sg_styles.css' %}">
+    <h3>Choose Your Movie Magic! 🍿✨</h3>
+    <p>Westerns or Whodunits, Sci-Fi or Swoon-worthy Romance, our Genres are your gateway to film enchantment. Click and let the movie marathon begin!</p>
+    <form method="post">
+        {% csrf_token %}
+        {% if error_msg %}
+            <p style="color: red;">{{ error_msg }}</p>
+        {% endif %}
+        <div class="genre-boxes">
+            {% for genre in genres %}
+                <label class="genre-label" data-genre-id="{{ genre.id }}">
+                    <input type="checkbox" name="genres[]" value="{{ genre.id }}">
+                    <div class="genre-box">{{ genre.name }}</div>
+                </label>
+            {% endfor %}
+        </div>
+        <label for="num_recommendations" align="center">Number of Recommendations:</label>
+        
+    <input type="number" name="num_recommendations" id="num_recommendations" value="10" min="1" max="50" align="center">
+        <button type="submit">Generate!</button>
+    </form>
+    <form method="post" action="{% url 'movies:random_movie' %}">
+        {% csrf_token %}
+        <p align="center">Confused?</p>
+        <button type="submit">Generate Random Movie</button>
+    </form>
+    <style>
+
+        label[for="num_recommendations"],
+        input[name="num_recommendations"] {
+        display: block;
+        margin: 0 auto;
+        text-align: center;
+        }
+        body {
+            background-color: #88b3c2;
+        }
+        .genre-boxes {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        .genre-label {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+        .genre-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 120px;
+            height: 60px;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #555;
+            transition: background-color 0.3s ease;
+            background-color: #c2cccc; 
+        }
+        input[type="checkbox"]:checked + .genre-box {
+            background-color: #4CAF50;
+            color: #fff;
+        }
+    </style>
+{% endblock %}
+
+
+

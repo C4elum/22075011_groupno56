@@ -1,0 +1,78 @@
+
+
+{% extends "users/base.html" %}
+{% load static %}
+
+{% block content %}
+    <title>Edit Profile</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'users/edit_profile.css' %}">
+</head>
+<body>
+    <h1>Edit Profile</h1>
+    
+    <form method="post" action="{% url 'users:edit_profile' %}">
+        {% csrf_token %}
+        
+        <div>
+            {{ form.username.label_tag }}
+            {{ form.username }}
+        </div>
+      
+        <div>
+            {{ form.first_name.label_tag }}
+            {{ form.first_name }}
+        </div>
+        
+       
+        <div>
+            {{ form.last_name.label_tag }}
+            {{ form.last_name }}
+        </div>
+        
+        <h3>Watchlist</h3>
+<ul>
+    <!-- {% for watchlistmovie in watchlist_movies %}
+        <li>
+            {{ watchlistmovie.movie.original_title }}
+        </li>
+    {% empty %}
+        <p>No movies in your watchlist.</p>
+    {% endfor %} -->
+    {% for watchlistmovie in watchlist_movies %}
+    <li>
+        <a href="{% url 'movies:movie-detail' watchlistmovie.movie.id %}">{{ watchlistmovie.movie.original_title }}</a>
+
+       
+    </li>
+{% empty %}
+    <p>No movies in your watchlist.</p>
+{% endfor %}
+
+</ul>
+
+<h3>Watched Movies</h3>
+<ul>
+    {% for watched_movie in watched_movies %}
+        <li>
+            {{ watched_movie.movie.original_title }}
+        </li>
+    {% empty %}
+        <p>No watched movies.</p>
+    {% endfor %}
+</ul>
+
+
+
+        <button type="submit">Save Changes</button>
+    </form>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+   
+</body> 
+{% endblock %}

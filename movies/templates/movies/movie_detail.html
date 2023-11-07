@@ -1,0 +1,55 @@
+{% extends "users/base.html" %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'movies/m_d.css' %}">
+    <div class="movie-details">
+        <div class="movie-poster">
+            <img src="https://image.tmdb.org/t/p/original/{{ movie.poster_path }}" alt="{{ movie.original_title }} Poster" width="320" height="480" onerror="this.onerror=null; this.src='/' + 'static' + '/movies/alternate.png';">
+        </div>
+        <div class="movie-info">
+            <h1>{{ movie.original_title }}</h1>
+            
+            <p class="genres"><strong>Genres:</strong> {{ movie.genres }}</p>
+            <p class="release-date"><strong>Release Date:</strong> Date: {{ movie.release_date }}</p>
+            <p class="rating"><strong>Rating:</strong> {{ movie.vote_average }} ⭐</p>
+            <p class="overview"><strong>Overview:</strong> {{ movie.overview }}</p>
+            
+            
+            <div class="watchlist-section">
+                {% if request.user.is_authenticated %}
+                {% if movie.id in watched_movie_ids %}
+                    <p class="watched">(Already Watched! 👍)</p>
+                {% elif movie.id in watchlist_movie_ids %}
+                    <p class="watchlist">(Already in your Watchlist 🙃)</p>
+                    <form method="post" action="{% url 'movies:add_to_watched' movie.id %}">
+                        {% csrf_token %}
+                        <label for="rating">Rating (out of 10):</label>
+                        <input type="number" name="rating" id="rating" min="1" max="10" required>
+                        <button type="submit">Add to Watched</button>
+                    </form>
+                {% else %}
+                    <form method="post" action="{% url 'movies:add_to_watchlist' movie.id %}">
+                        {% csrf_token %}
+                        <button type="submit" class="add-to-watchlist">Add to Watchlist</button>
+                    </form>
+                    <form method="post" action="{% url 'movies:add_to_watched' movie.id %}">
+                        {% csrf_token %}
+                        <label for="rating">Rating (out of 10):</label>
+                        <input type="number" name="rating" id="rating" min="1" max="10" required>
+                        <button type="submit">Add to Watched</button>
+                    </form>
+                {% endif %}
+            {% else %}
+                <p class="login-required">Please <a href="{% url 'account_login' %}?next={{ request.path }}">log in</a> to add to your watched list or watchlist.</p>
+            {% endif %}
+            
+                
+            </div>
+        </div>
+    </div>
+    <a href="{% url 'movies:movie-list' %}" class="back-to-movie-list">Back to Movie List</a>
+    <a href="{% url 'users:select_genres' %}" class="back-to-movie-list">Explore Genres?!</a>
+{% endblock %}
+
+

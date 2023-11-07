@@ -1,0 +1,241 @@
+/* body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+}
+
+.genre-label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.genre-label.selected {
+    color: blue;
+}
+
+input[type="checkbox"] {
+    display: none;
+}
+
+header {
+    background-color: #0073e6;
+    color: rgb(142, 235, 100);
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header a {
+    color: rgb(156, 78, 78);
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+h2 {
+    margin: 20px;
+}
+
+form {
+    margin: 20px;
+}
+
+
+.genre-boxes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+
+.genre-label::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; 
+    height: 100%; 
+    background-color: transparent;
+    z-index: -1;
+}
+
+.genre-label {
+    position: relative;
+    border: 2px solid #1cbd45;
+    border-radius: 5px;
+    padding: 20px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    width: 200px;
+    text-align: center;
+    margin: 10px;
+}
+
+.genre-label input[type="checkbox"] {
+    display: none; 
+}
+
+.genre-label input[type="checkbox"]:checked + .genre-label {
+    background-color: #FFA500;
+    color: rgb(141, 32, 32);
+}
+
+
+
+
+
+
+#num_recommendations {
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+button {
+    background-color: #0073e6;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    background-color: #0050a1; 
+}
+
+p {
+    margin-top: 10px;
+}
+input[type="checkbox"] {
+    display: none;
+}
+
+.genre-label {
+    position: relative;
+    background-color: #f2f2f2;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    width: 200px;
+    text-align: center;
+    margin: 10px;
+}
+
+.genre-label::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    z-index: -1;
+}
+
+.genre-label input[type="checkbox"]:checked + .genre-label::before {
+    background-color: #FFA500;
+}
+
+.genre-label input[type="checkbox"]:checked + .genre-label {
+    background-color: #FFA500;
+    color: white;
+} */
+
+
+/* Reset styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #88b3c2;
+}
+
+/* Main container */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Page header */
+header {
+    background-color:#083057;
+    color: rgb(142, 235, 100);
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header a {
+    color: rgb(156, 78, 78);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+header a:hover {
+    text-decoration: underline;
+}
+
+/* Genre selection form */
+.genre-boxes {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.genre-label {
+    display: block;
+    margin-bottom: 10px;
+    padding-left: 30px;
+    position: relative;
+    cursor: pointer;
+}
+
+.genre-label.selected:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+}
+.genre-label input[type="checkbox"]:checked + span {
+    color: blue;
+}
+
+
+input[type="checkbox"] {
+    display: none;
+}
+
+/* Number of recommendations input */
+/* label[for="num_recommendations"] {
+    display: block;
+    margin-top: 20px;
+    align: center;
+}
+
+input#num_recommendations {
+    margin-top: 5px;
+} */
+
+
+button[type="submit"] {
+    display: block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #083057;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+button[type="submit"]:hover {
+    background-color: #204e7c;
+}

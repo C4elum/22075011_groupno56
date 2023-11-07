@@ -1,0 +1,58 @@
+{% extends "users/base.html" %}
+{% load static %}
+
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'movies/rm_styles.css' %}">
+    <title>Random Movie Recommendation</title>
+</head>
+<body>
+    <h2 align="centre" >Your Mystery Movie Mixtape 🎥🔮</h2>
+    {% if random_movie %}
+    <div class="movie-container">
+        <div class="movie-poster">
+            <img src="https://image.tmdb.org/t/p/original/{{ random_movie.poster_path }}" alt="{{ random_movie.original_title }} Poster" width="320" height="480" data-movie-id="{{ movie.id }}" onerror="this.onerror=null; this.src='/' + 'static' + '/movies/alternate.png';">
+        
+        <!-- <img src="https://image.tmdb.org/t/p/original//iE63xgOl9hCkr5aN3Bq2dk7iPpu.jpg" > -->
+        </div>
+        <div class="movie-details">
+
+            <h2>{{ random_movie.original_title }}</h2>
+                <p><strong>Genres:</strong> {{ random_movie.genres }}</p>
+                <p><strong>Release Date:</strong> {{ random_movie.release_date }}</p>
+                <p><strong>Rating:</strong> {{ random_movie.vote_average}}⭐</p>
+                <p><strong>Overview:</strong> {{ random_movie.overview }}</p>
+                <!-- Include watchlist and watched functionality if needed -->
+                {% if user.is_authenticated %}
+                    {% if movie in watchlist_movies %}
+                        <p class="watchlist">In Your Watchlist</p>
+                    {% else %}
+                        <form method="post" action="{% url 'movies:add_to_watchlist' random_movie.id %}">
+                            {% csrf_token %}
+                            <button type="submit">Add to Watchlist</button>
+                        </form>
+                    {% endif %}
+                    {% if movie in watched_movies %}
+                        <p class="watched">Already Watched</p>
+                    {% else %}
+                        <form method="post" action="{% url 'movies:add_to_watched' random_movie.id %}">
+                            {% csrf_token %}
+                            <label for="rating">Rating:</label>
+                            <input type="number" name="rating" id="rating" min="1" max="10" required>
+                            <button type="submit">Add to Watched</button>
+                        </form>
+                    {% endif %}
+                {% endif %}
+            </div>
+    </div>
+  
+    {% else %}
+        <p>No more random movies available.</p>
+    {% endif %}
+    <div class = "buttons">
+        <a href="{% url 'movies:random_movie' %}" class="btn btn-primary">Generate Another Random Movie</a>
+        <a href="{% url 'users:select_genres' %}" class="btn btn-secondary">Back to Genre Selection</a>
+    </div>
+</body>
+{%endblock%}

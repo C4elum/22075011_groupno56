@@ -1,0 +1,64 @@
+
+/* Reset default margin and padding for all elements */
+
+/* Reset default margin and padding for all elements */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Set background color and font for the body */
+body {
+  font-family: 'Arial', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url("https://i.pinimg.com/originals/a8/ec/06/a8ec0697a5399d67899078d2632e1b75.png");
+  background-color: #e4eff5;
+}
+
+/* Style the main container */
+.container {
+  text-align: center;
+  padding: 50px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Style the header section */
+h1 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Style the paragraph */
+p {
+  color: #555;
+  margin-bottom: 30px;
+}
+
+/* Style the buttons */
+.buttons a {
+  text-decoration: none;
+}
+
+button {
+  background-color: #094557;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px;
+  transition: background-color 0.3s;
+}
+
+/* Add hover effect for buttons */
+button:hover {
+  background-color: #6badeb;
+}
+
+
