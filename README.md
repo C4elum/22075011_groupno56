@@ -1,7 +1,4 @@
 # MovieMaven
- "MovieMaven" is an innovative web application designed for movie enthusiasts and casual filmgoers alike. It provides a comprehensive platform for discovering, tracking, and enjoying movies effortlessly. With its user-friendly interface and an array of features, MovieMaven offers a convenient and personalized movie experience. 
-
-
 "MovieMaven" is a web-based movie recommendation and management platform built using Django, Python, and several web technologies. It's designed to provide users with personalized movie recommendations based on their genre preferences, manage their movie watchlist, and keep track of movies they've watched. This README will guide you on how to get started with MovieMaven, its features, and how you can contribute to the project.
 
 # Key Features
